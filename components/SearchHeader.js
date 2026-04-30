@@ -23,7 +23,7 @@ export default function SearchHeader() {
           objectFit="contain"
           height="40"
           className="cursor-pointer"
-          src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2f/Google_2015_logo.svg/1200px-Google_2015_logo.svg.png"
+          src="/google.png"
         />
         <form className="flex border border-gray-200 rounded-full shadow-lg px-6 py-3 ml-10 mr-5 flex-grow max-w-3xl items-center">
           <input
