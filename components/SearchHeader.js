@@ -19,11 +19,12 @@ export default function SearchHeader() {
       <div className="flex w-full p-6 items-center">
         <Image
           onClick={() => router.push("/")}
-          width="120"
-          objectFit="contain"
-          height="40"
+          width={120}
+          style={{ objectFit: "contain" }}
+          height={40}
           className="cursor-pointer"
           src="/google.png"
+          alt="google logo"
         />
         <form className="flex border border-gray-200 rounded-full shadow-lg px-6 py-3 ml-10 mr-5 flex-grow max-w-3xl items-center">
           <input

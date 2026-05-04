@@ -6,12 +6,12 @@ import { useRouter } from "next/router";
 import ImageResults from "../components/ImageResults";
 
 export default function Search({ results }) {
-  console.log(results.error);
+  console.log(JSON.stringify(results, null, 2));
   const router = useRouter();
   return (
     <div>
       <Head>
-        <title>{router.query.term} - Search page</title>
+        <title>{String(router.query.term)} - Search page</title>
       </Head>
 
       {/* Search Header */}
@@ -31,14 +31,14 @@ export async function getServerSideProps(context) {
   const startIndex = context.query.start || "1";
   const mockData = false;
   const data = mockData
-    ? Response
-    : await fetch(
-        `https://www.googleapis.com/customsearch/v1?key=${
-          process.env.API_KEY
-        }&cx=${process.env.CONTEXT_KEY}&q=${context.query.term}${
-          context.query.searchType && "&searchType=image"
-        }&start=${startIndex}`
-      ).then((response) => response.json());
+  ? Response
+  : await fetch(
+      `https://www.googleapis.com/customsearch/v1?key=${
+        process.env.API_KEY
+      }&cx=${process.env.CONTEXT_KEY}&q=${context.query.term}${
+        context.query.searchType === "image" ? "&searchType=image" : ""
+      }&start=${startIndex}`
+    ).then((res) => res.json());
   return {
     props: {
       results: data,
